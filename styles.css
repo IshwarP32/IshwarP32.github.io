@@ -1,70 +1,395 @@
-/* styles.css */
+/* Modern Minimal CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Dark Theme Variables */
+:root {
+  /* Colors */
+  --accent: #168aff; /* Modern orange accent */
+  
+  --background: #181A1B; /* Main dark background */
+  --surface: #242526;   /* Card and section backgrounds */
+  --border: #3A3B3C;    /* Subtle border color */
+  
+  --text-primary: #E1E1E1;   /* Primary text */
+  --text-secondary: #A0A0A0; /* Secondary text */
+  --text-muted: #7A7B7C;     /* Muted text */
+  
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Spacing */
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  
+  /* Border Radius */
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
 }
 
-.container {
-  width: 400px;
-  padding: 20px;
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: var(--surface);
+  padding: var(--space-8) 0 var(--space-6) 0;
   text-align: center;
 }
 
-h1,
+.header-text h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Navigation */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: var(--space-4);
+  margin: 0;
+}
+
+nav ul li a {
+  padding: var(--space-3) var(--space-6);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active,
+nav ul li a:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Main Content */
+main {
+  padding: var(--space-12) 0 var(--space-8) 0;
+  display: grid;
+  gap: var(--space-8);
+}
+
+section {
+  background: var(--surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  scroll-margin-top: 80px;
+}
+
 h2 {
-  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--accent);
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+/* PDF Container */
+.pdf-container {
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-4);
+  background: var(--background);
 }
 
-li {
-  background-color: #333333;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-li:hover {
-  background-color: #6200ea;
-}
-
-.selected{
-  background-color: #f90000;
-}
-
-button {
-  padding: 10px;
-  background-color: #6200ea;
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
   border: none;
-  border-radius: 5px;
+}
+
+/* Tech Stack Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+  margin-bottom: var(--space-6);
+}
+
+.tags li {
+  background: var(--accent);
   color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-button:hover {
-  background-color: #3700b3;
+/* Additional Tech Stack Info */
+#techstack ul:not(.tags) {
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
 }
 
-.hidden {
-  display: none;
+#techstack ul:not(.tags) li {
+  padding: var(--space-3);
+  background: var(--background);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+
+/* Repository Links */
+#repos ul {
+  list-style: none;
+  display: grid;
+  gap: var(--space-4);
+}
+
+#repos li {
+  background: var(--background);
+  padding: var(--space-6);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+#repos li:hover {
+  border-color: var(--accent);
+}
+
+#repos a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+#repos a:hover {
+  text-decoration: underline;
+}
+
+#repos ul ul {
+  margin-top: var(--space-2);
+  padding-left: var(--space-4);
+}
+
+#repos ul ul li {
+  background: none;
+  padding: var(--space-1) 0;
+  border: none;
+  border-radius: 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Education */
+#education p {
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+  background: var(--background);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--secondary);
+}
+
+#education p:last-child {
+  margin-bottom: 0;
+}
+
+/* Achievements */
+#achievements ul {
+  list-style: none;
+}
+
+#achievements li {
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  background: var(--background);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+
+#achievements li:last-child {
+  margin-bottom: 0;
+}
+
+/* Profiles */
+.profiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  list-style: none;
+}
+
+.profiles li a {
+  display: block;
+  background: var(--background);
+  color: var(--text-primary);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  text-align: center;
+  font-weight: 500;
+}
+
+.profiles li a:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+}
+
+/* Contact List */
+.contact-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+}
+
+ .contact-list li {
+  padding: var(--space-4);
+  background: var(--background);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+}
+
+.contact-list a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: var(--space-8) 0;
+  margin-top: var(--space-12);
+  color: var(--text-muted);
+}
+
+/* Resume Section */
+#resume {
+  margin-top: var(--space-8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+  
+  header {
+    padding: var(--space-8) 0 var(--space-6) 0;
+  }
+  
+  .header-text h1 {
+    font-size: 2.25rem;
+  }
+  
+  nav ul {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+  
+  nav ul li a {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.875rem;
+  }
+  
+  section {
+    padding: var(--space-6);
+  }
+  
+  main {
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+  }
+  
+  .profiles {
+    grid-template-columns: 1fr;
+  }
+  
+  .pdf-container {
+    height: 400px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-text h1 {
+    font-size: 2rem;
+  }
+  
+  section {
+    padding: var(--space-4);
+  }
+  
+  .pdf-container {
+    height: 300px;
+  }
+  
+  .tags {
+    gap: var(--space-2);
+  }
+  
+  .tags li {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.75rem;
+  }
 }

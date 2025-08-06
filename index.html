@@ -1,30 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ishwar Patil - Portfolio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
     <div class="container">
-      <h1>Quiz App</h1>
-      <div id="quiz-container">
-        <div id="question-container" class="hidden">
-          <h2 id="question-text"></h2>
-          <ul id="choices-list">
-            <!-- Choices will be added dynamically here -->
-          </ul>
-          <button id="next-btn" class="hidden">Next Question</button>
-        </div>
-        <div id="result-container" class="hidden">
-          <h2>Your Score:</h2>
-          <p id="score"></p>
-          <button id="restart-btn">Restart Quiz</button>
-        </div>
-        <button id="start-btn">Start Quiz</button>
+      <div class="header-text">
+        <h1>Ishwar Patil</h1>
+        <p class="subtitle">Software Engineer | Full Stack Developer</p>
       </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#techstack">Tech Stack</a></li>
+      <li><a href="#repos">GitHub Repos</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#profiles">Coding Profiles</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <section id="resume">
+      <h2>Resume</h2>
+      <!-- Embed your Google Drive PDF link below -->
+      <div class="pdf-container">
+        <iframe src="https://drive.google.com/file/d/1PZgwcG8geisFfzKORsD2cyQ8OD2hiNEX/preview" allow="autoplay"></iframe>
+      </div>
+      <p>
+        <a href="https://drive.google.com/file/d/1PZgwcG8geisFfzKORsD2cyQ8OD2hiNEX/view?usp=drive_link" target="_blank">View PDF in new tab</a>
+        <!-- <a href="https://github.com/IshwarP32/your-repo/raw/main/your_resume.pdf" target="_blank">Download from GitHub</a> -->
+      </p>
+    </section>
+
+    <section id="techstack">
+      <h2>Tech Stack</h2>
+      <ul class="tags">
+        <li>C++</li>
+        <li>C</li>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>React</li>
+        <li>Tailwind CSS</li>
+        <li>Node.js</li>
+        <li>Express.js</li>
+        <li>MongoDB</li>
+        <li>Cloudinary</li>
+        <li>Postman</li>
+        <li>Socket.io</li>
+        <li>Git</li>
+        <li>GitHub</li>
+        <!-- Add more as needed -->
+      </ul>
+      <ul>
+        <li><strong>Developer Tools:</strong> VS Code, Git, GitHub, Postman</li>
+        <li><strong>Coursework:</strong> Data Structures and Algorithms, Operating Systems</li>
+        <li><strong>Areas of Interest:</strong> Backend Development, Data Structures and Algorithms</li>
+        <li><strong>Soft Skills:</strong> Leadership, Communication, Adaptability, Teamwork, Time management</li>
+      </ul>
+    </section>
+
+    <section id="repos">
+      <h2>GitHub Repositories</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/IshwarP32/KingsMove" target="_blank"><strong>KingsMove</strong> – Web App for Live Chess Duels Online</a>
+          <ul>
+            <li>Real-time chess platform: secure login, friend system, PvP matchmaking</li>
+            <li>Tech: React.js, Node.js, Express.js, MongoDB, Socket.io, JWT, Cloudinary</li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://github.com/IshwarP32/MediQueue" target="_blank"><strong>MediQueue</strong> – Doctor Appointment Booking System</a>
+          <ul>
+            <li>Secure & scalable backend for booking and managing appointments</li>
+            <li>Tech: React.js, Node.js, Express.js, MongoDB, JWT, Cloudinary</li>
+          </ul>
+        </li>
+        <!-- Add your featured repositories -->
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p>
+        <strong>B.Tech in Electronics and Communication Engineering</strong> <br>
+        Motilal Nehru National Institute of Technology, Allahabad <br>
+        <strong>2023-2027</strong> <br>
+        <strong>CPI:</strong> 8.4 (Till 4th Sem)
+      </p>
+      <p>
+        <strong>Higher Secondary Education</strong><br>
+        New English School Junior College, Jamner, Maharashtra (State Board) <br>
+        <strong>Percentage:</strong> 79.00 (2023)
+      </p>
+      <p>
+        <strong>Secondary Education</strong><br>
+        New English School, Jamner, Maharashtra (State Board) <br>
+        <strong>Percentage:</strong> 96.80 (2021)
+      </p>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Winner, Galactic Odyssey 2024 in BotRush 2.0 hosted by Robotics Club MNNIT</li>
+        <!-- Add more achievements -->
+      </ul>
+    </section>
+
+    <section id="profiles">
+      <h2>Coding Profiles</h2>
+      <ul class="profiles">
+        <li><a href="https://leetcode.com/u/ishwarp/" target="_blank">LeetCode: ishwarp</a></li>
+        <li><a href="https://codeforces.com/profile/ishwarp32" target="_blank">Codeforces: ishwarp32</a></li>
+        <li><a href="https://github.com/IshwarP32" target="_blank">GitHub: IshwarP32</a></li>
+        <!-- Add more as needed -->
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:ishwarpatil8767@gmail.com">ishwarpatil8767@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/ipatil/" target="_blank">ishwarp</a></li>
+        <!-- Add phone or other contact if you wish -->
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Ishwar Patil</p>
+    </div>
+  </footer>
+  
+  <script src="./script.js"></script> 
+</body>
 </html>
