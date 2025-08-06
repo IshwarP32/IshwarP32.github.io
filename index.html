@@ -4,76 +4,203 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>IshwarP32's GitHub Repos</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="https://github.com/IshwarP32.png">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f9fafb;
+      --card-bg: #fff;
+      --text-main: #22223b;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 1rem;
+      --shadow: 0 2px 8px rgba(30, 42, 110, 0.06);
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--card-bg);
+      box-shadow: 0 2px 4px rgba(30, 42, 110, 0.03);
+      padding: 1.2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+    .avatar {
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--border);
+      margin-right: 0.75rem;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1.18rem;
+    }
+    .github-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .github-link:hover { color: #1d4ed8; }
+    main {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    #repos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 650px) {
+      #repos { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 0.6rem; }
+      main { padding: 1.2rem 0.6rem 0.7rem 0.6rem; }
+    }
+    .repo-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+    .repo-card:hover {
+      border: 1.5px solid var(--primary);
+      box-shadow: 0 4px 16px rgba(30, 42, 110, 0.10);
+    }
+    .repo-title {
+      font-size: 1.13rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .repo-title:hover { color: #1e40af; }
+    .repo-desc {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+      min-height: 32px;
+    }
+    .repo-meta {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.87rem;
+      color: var(--text-muted);
+    }
+    .repo-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .star {
+      color: #fbbf24;
+      font-size: 1em;
+    }
+    footer {
+      text-align: center;
+      color: #a0aec0;
+      padding: 1.5rem 0 0.7rem 0;
+      font-size: 1rem;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-  <!-- Header -->
-  <header class="bg-white shadow sticky top-0 z-10">
-    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <img src="https://github.com/IshwarP32.png" alt="Avatar" class="rounded-full w-10 h-10 border border-gray-200">
-        <span class="text-xl font-bold text-gray-800">IshwarP32</span>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="profile">
+        <img src="https://github.com/IshwarP32.png" class="avatar" alt="IshwarP32's avatar"/>
+        IshwarP32
       </div>
-      <a href="https://github.com/IshwarP32" target="_blank" rel="noopener" class="text-blue-600 hover:underline font-semibold">View GitHub Profile &rarr;</a>
+      <a href="https://github.com/IshwarP32" class="github-link" target="_blank">View GitHub Profile &rarr;</a>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">My GitHub Repositories</h1>
-    <div id="repos" class="grid gap-6 md:grid-cols-2"></div>
-    <div id="loading" class="text-center text-gray-500 mt-8">Loading repositories...</div>
-    <div id="error" class="text-center text-red-500 mt-8 hidden"></div>
+  <main>
+    <h1>My GitHub Repositories</h1>
+    <div id="repos"></div>
+    <div id="loading" style="text-align:center;color:#888;margin-top:1.5em;">Loading repositories…</div>
+    <div id="error" style="text-align:center;color:#e11d48;margin-top:1.5em;display:none;"></div>
   </main>
 
-  <footer class="text-center text-gray-400 py-6">
-    &copy; <span id="year"></span> IshwarP32. Powered by GitHub API.
+  <footer>
+    &copy; <span id="year"></span> IshwarP32 &mdash; Powered by GitHub API.
   </footer>
-
+  
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     async function fetchRepos() {
       const username = 'IshwarP32';
-      const reposContainer = document.getElementById('repos');
+      const reposDiv = document.getElementById('repos');
       const loading = document.getElementById('loading');
       const error = document.getElementById('error');
-      loading.style.display = '';
-      error.style.display = 'none';
       try {
         const resp = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
-        if (!resp.ok) throw new Error('Failed to fetch repos');
+        if (!resp.ok) throw new Error('GitHub API error');
         const repos = await resp.json();
-        reposContainer.innerHTML = '';
+        reposDiv.innerHTML = '';
         if (repos.length === 0) {
-          reposContainer.innerHTML = '<div class="text-center text-gray-500">No repositories found.</div>';
+          reposDiv.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#888;">No repositories found.</div>';
         } else {
-          repos.forEach(repo => {
-            reposContainer.innerHTML += `
-              <div class="bg-white shadow rounded-xl p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
-                <div>
-                  <a href="${repo.html_url}" target="_blank" rel="noopener"
-                     class="text-xl font-semibold text-blue-700 hover:underline">
-                    ${repo.name}
-                  </a>
-                  <p class="text-gray-600 mt-2 text-sm">${repo.description ? repo.description : 'No description'}</p>
-                </div>
-                <div class="flex items-center justify-between mt-4 text-xs text-gray-400">
-                  <span>★ ${repo.stargazers_count}</span>
-                  <span>${repo.language ? repo.language : ''}</span>
-                  <span>Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+          for (const repo of repos) {
+            reposDiv.innerHTML += `
+              <div class="repo-card">
+                <a class="repo-title" href="${repo.html_url}" target="_blank">${repo.name}</a>
+                <div class="repo-desc">${repo.description ? repo.description.replace(/</g, "&lt;") : "No description"}</div>
+                <div class="repo-meta">
+                  <span title="Stars">
+                    <span class="star">&#9733;</span> ${repo.stargazers_count}
+                  </span>
+                  ${repo.language ? `<span title="Primary language">${repo.language}</span>` : ""}
+                  <span title="Last updated">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
                 </div>
               </div>
             `;
-          });
+          }
         }
+        loading.style.display = "none";
+        error.style.display = "none";
       } catch (e) {
-        error.textContent = "Couldn't load repositories. Please try again later.";
-        error.style.display = '';
+        loading.style.display = "none";
+        error.style.display = "";
+        error.textContent = "Couldn't load repositories. Try again later.";
       }
-      loading.style.display = 'none';
     }
-
     fetchRepos();
   </script>
 </body>
