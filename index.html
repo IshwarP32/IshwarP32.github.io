@@ -1,207 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>IshwarP32's GitHub Repos</title>
-  <link rel="icon" href="https://github.com/IshwarP32.png">
-  <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f9fafb;
-      --card-bg: #fff;
-      --text-main: #22223b;
-      --text-muted: #6b7280;
-      --border: #e5e7eb;
-      --radius: 1rem;
-      --shadow: 0 2px 8px rgba(30, 42, 110, 0.06);
-    }
-    body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background: var(--card-bg);
-      box-shadow: 0 2px 4px rgba(30, 42, 110, 0.03);
-      padding: 1.2rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .header-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1.5rem;
-    }
-    .avatar {
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      border: 1.5px solid var(--border);
-      margin-right: 0.75rem;
-    }
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      font-size: 1.18rem;
-    }
-    .github-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.15s;
-    }
-    .github-link:hover { color: #1d4ed8; }
-    main {
-      flex: 1;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      font-weight: 700;
-    }
-    #repos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 650px) {
-      #repos { grid-template-columns: 1fr; }
-      .header-inner { flex-direction: column; gap: 0.6rem; }
-      main { padding: 1.2rem 0.6rem 0.7rem 0.6rem; }
-    }
-    .repo-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.2rem 1rem 1rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 140px;
-      border: 1px solid var(--border);
-      transition: box-shadow 0.2s, border 0.2s;
-    }
-    .repo-card:hover {
-      border: 1.5px solid var(--primary);
-      box-shadow: 0 4px 16px rgba(30, 42, 110, 0.10);
-    }
-    .repo-title {
-      font-size: 1.13rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      color: var(--primary);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .repo-title:hover { color: #1e40af; }
-    .repo-desc {
-      font-size: 0.96rem;
-      color: var(--text-muted);
-      margin-bottom: 1.1rem;
-      min-height: 32px;
-    }
-    .repo-meta {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 0.87rem;
-      color: var(--text-muted);
-    }
-    .repo-meta span {
-      display: flex;
-      align-items: center;
-      gap: 0.3em;
-    }
-    .star {
-      color: #fbbf24;
-      font-size: 1em;
-    }
-    footer {
-      text-align: center;
-      color: #a0aec0;
-      padding: 1.5rem 0 0.7rem 0;
-      font-size: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <div class="profile">
-        <img src="https://github.com/IshwarP32.png" class="avatar" alt="IshwarP32's avatar"/>
-        IshwarP32
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Quiz App</h1>
+      <div id="quiz-container">
+        <div id="question-container" class="hidden">
+          <h2 id="question-text"></h2>
+          <ul id="choices-list">
+            <!-- Choices will be added dynamically here -->
+          </ul>
+          <button id="next-btn" class="hidden">Next Question</button>
+        </div>
+        <div id="result-container" class="hidden">
+          <h2>Your Score:</h2>
+          <p id="score"></p>
+          <button id="restart-btn">Restart Quiz</button>
+        </div>
+        <button id="start-btn">Start Quiz</button>
       </div>
-      <a href="https://github.com/IshwarP32" class="github-link" target="_blank">View GitHub Profile &rarr;</a>
     </div>
-  </header>
-
-  <main>
-    <h1>My GitHub Repositories</h1>
-    <div id="repos"></div>
-    <div id="loading" style="text-align:center;color:#888;margin-top:1.5em;">Loading repositories…</div>
-    <div id="error" style="text-align:center;color:#e11d48;margin-top:1.5em;display:none;"></div>
-  </main>
-
-  <footer>
-    &copy; <span id="year"></span> IshwarP32 &mdash; Powered by GitHub API.
-  </footer>
-  
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    async function fetchRepos() {
-      const username = 'IshwarP32';
-      const reposDiv = document.getElementById('repos');
-      const loading = document.getElementById('loading');
-      const error = document.getElementById('error');
-      try {
-        const resp = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
-        if (!resp.ok) throw new Error('GitHub API error');
-        const repos = await resp.json();
-        reposDiv.innerHTML = '';
-        if (repos.length === 0) {
-          reposDiv.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#888;">No repositories found.</div>';
-        } else {
-          for (const repo of repos) {
-            reposDiv.innerHTML += `
-              <div class="repo-card">
-                <a class="repo-title" href="${repo.html_url}" target="_blank">${repo.name}</a>
-                <div class="repo-desc">${repo.description ? repo.description.replace(/</g, "&lt;") : "No description"}</div>
-                <div class="repo-meta">
-                  <span title="Stars">
-                    <span class="star">&#9733;</span> ${repo.stargazers_count}
-                  </span>
-                  ${repo.language ? `<span title="Primary language">${repo.language}</span>` : ""}
-                  <span title="Last updated">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
-                </div>
-              </div>
-            `;
-          }
-        }
-        loading.style.display = "none";
-        error.style.display = "none";
-      } catch (e) {
-        loading.style.display = "none";
-        error.style.display = "";
-        error.textContent = "Couldn't load repositories. Try again later.";
-      }
-    }
-    fetchRepos();
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
