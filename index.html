@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>IshwarP32's GitHub Repos</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://github.com/IshwarP32.png" alt="Avatar" class="rounded-full w-10 h-10 border border-gray-200">
+        <span class="text-xl font-bold text-gray-800">IshwarP32</span>
+      </div>
+      <a href="https://github.com/IshwarP32" target="_blank" rel="noopener" class="text-blue-600 hover:underline font-semibold">View GitHub Profile &rarr;</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">My GitHub Repositories</h1>
+    <div id="repos" class="grid gap-6 md:grid-cols-2"></div>
+    <div id="loading" class="text-center text-gray-500 mt-8">Loading repositories...</div>
+    <div id="error" class="text-center text-red-500 mt-8 hidden"></div>
+  </main>
+
+  <footer class="text-center text-gray-400 py-6">
+    &copy; <span id="year"></span> IshwarP32. Powered by GitHub API.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    async function fetchRepos() {
+      const username = 'IshwarP32';
+      const reposContainer = document.getElementById('repos');
+      const loading = document.getElementById('loading');
+      const error = document.getElementById('error');
+      loading.style.display = '';
+      error.style.display = 'none';
+      try {
+        const resp = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
+        if (!resp.ok) throw new Error('Failed to fetch repos');
+        const repos = await resp.json();
+        reposContainer.innerHTML = '';
+        if (repos.length === 0) {
+          reposContainer.innerHTML = '<div class="text-center text-gray-500">No repositories found.</div>';
+        } else {
+          repos.forEach(repo => {
+            reposContainer.innerHTML += `
+              <div class="bg-white shadow rounded-xl p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                <div>
+                  <a href="${repo.html_url}" target="_blank" rel="noopener"
+                     class="text-xl font-semibold text-blue-700 hover:underline">
+                    ${repo.name}
+                  </a>
+                  <p class="text-gray-600 mt-2 text-sm">${repo.description ? repo.description : 'No description'}</p>
+                </div>
+                <div class="flex items-center justify-between mt-4 text-xs text-gray-400">
+                  <span>★ ${repo.stargazers_count}</span>
+                  <span>${repo.language ? repo.language : ''}</span>
+                  <span>Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                </div>
+              </div>
+            `;
+          });
+        }
+      } catch (e) {
+        error.textContent = "Couldn't load repositories. Please try again later.";
+        error.style.display = '';
+      }
+      loading.style.display = 'none';
+    }
+
+    fetchRepos();
+  </script>
+</body>
+</html>
