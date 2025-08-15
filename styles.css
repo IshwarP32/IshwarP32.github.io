@@ -183,50 +183,193 @@ h2 {
   border-left: 3px solid var(--accent);
 }
 
-/* Repository Links */
-#repos ul {
-  list-style: none;
+/* Repository Links - Updated Project Cards */
+.projects-grid {
   display: grid;
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-6);
 }
 
-#repos li {
+.project-card {
   background: var(--background);
   padding: var(--space-6);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  transition: border-color 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-#repos li:hover {
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+
+.project-card:hover {
   border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-#repos a {
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.project-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.project-header h3 a {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.125rem;
-  display: block;
-  margin-bottom: var(--space-2);
 }
 
-#repos a:hover {
+.project-header h3 a:hover {
   text-decoration: underline;
 }
 
-#repos ul ul {
-  margin-top: var(--space-2);
-  padding-left: var(--space-4);
+.project-type {
+  background: var(--surface);
+  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
 }
 
-#repos ul ul li {
-  background: none;
-  padding: var(--space-1) 0;
-  border: none;
-  border-radius: 0;
+.project-description {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+  line-height: 1.6;
+}
+
+.project-links {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.demo-link, .repo-link {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.demo-link {
+  background: var(--accent);
+  color: white;
+}
+
+.demo-link:hover {
+  background: var(--accent);
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.repo-link {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.repo-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tech {
+  background: var(--surface);
+  color: var(--text-secondary);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+/* Achievements - Updated Card Layout */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.achievement-card {
+  background: var(--background);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+
+.achievement-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: var(--space-1);
+}
+
+.achievement-content h4 {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.achievement-event {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-bottom: var(--space-2);
+}
+
+.achievement-description {
   color: var(--text-secondary);
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 /* Education */
@@ -235,27 +378,10 @@ h2 {
   padding: var(--space-4);
   background: var(--background);
   border-radius: var(--radius);
-  border-left: 3px solid var(--secondary);
-}
-
-#education p:last-child {
-  margin-bottom: 0;
-}
-
-/* Achievements */
-#achievements ul {
-  list-style: none;
-}
-
-#achievements li {
-  padding: var(--space-4);
-  margin-bottom: var(--space-3);
-  background: var(--background);
-  border-radius: var(--radius);
   border-left: 3px solid var(--accent);
 }
 
-#achievements li:last-child {
+#education p:last-child {
   margin-bottom: 0;
 }
 
@@ -362,6 +488,20 @@ footer {
     grid-template-columns: 1fr;
   }
   
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
   .pdf-container {
     height: 400px;
   }
@@ -378,6 +518,23 @@ footer {
   
   section {
     padding: var(--space-4);
+  }
+  
+  .project-card, .achievement-card {
+    padding: var(--space-4);
+  }
+  
+  .achievement-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .achievement-icon {
+    align-self: center;
+  }
+  
+  .project-links {
+    flex-direction: column;
   }
   
   .pdf-container {
